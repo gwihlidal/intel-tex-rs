@@ -1,3 +1,6 @@
+extern crate image;
+extern crate ddsfile;
+
 fn main() {
     println!("This is the demo");
 

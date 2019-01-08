@@ -2,7 +2,7 @@ extern crate ispc;
 
 fn compile_kernel() {
     let mut cfg = ispc::Config::new();
-    cfg.file("src/ISPC Texture Compressor/ispc_texcomp/kernel.ispc");
+    cfg.file("vendor/ISPC Texture Compressor/ispc_texcomp/kernel.ispc");
     cfg.opt_level(3);
     //cfg.optimization_opt(ispc::OptimizationOpt::FastMath);
     //cfg.quiet();
