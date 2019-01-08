@@ -1,0 +1,40 @@
+[package]
+name = "intel_tex"
+version = "0.1.0"
+authors = ["Graham Wihlidal <graham@wihlidal.ca>"]
+description = "Rust bindings for Intel's ISPC texture compressor."
+homepage = "https://github.com/gwihlidal/intel-tex-rs"
+repository = "https://github.com/gwihlidal/intel-tex-rs"
+documentation = "https://docs.rs/spirv-reflect"
+readme = "README.md"
+keywords = ["texture", "image", "compress", "intel", "ispc"]
+categories = ["rendering", "rendering::engine", ]
+license = "MIT/Apache-2.0"
+build = "build.rs"
+include = [
+    "vendor/ISPC Texture Compressor/ispc_texcomp/kernel_astc.ispc",
+    "vendor/ISPC Texture Compressor/ispc_texcomp/kernel.ispc",
+    "src/lib.rs",
+    "build.rs",
+    "Cargo.toml",
+]
+edition = "2018"
+
+[badges]
+#travis-ci = { repository = "gwihlidal/intel-tex-rs" }
+maintenance = { status = "actively-developed" }
+
+[dependencies]
+ispc = "0.3.8"
+
+[build-dependencies]
+ispc = "0.3.8"
+
+[dev-dependencies]
+ddsfile = "0.2.3"
+image = "0.20.1"
+
+[profile.release]
+lto = true
+opt-level = 3
+codegen-units = 1
