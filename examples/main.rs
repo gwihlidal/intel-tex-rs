@@ -30,7 +30,7 @@ fn main() {
         }
     }
 
-    let block_count = divide_up_by_multiple(width * height, 8);
+    let block_count = intel_tex::divide_up_by_multiple(width * height, 8);
     println!("Block count: {}", block_count);
 
     let mip_count = 1;
