@@ -9,8 +9,8 @@ pub struct EncodeSettings {
 #[inline(always)]
 pub fn calc_output_size(width: u32, height: u32) -> usize {
     // ETC1 uses a fixed block size of 8 bytes (64 bits) and a fixed tile size of 4x4 texels.
-    let block_count = crate::divide_up_by_multiple(width * height, 8);
-    block_count as usize * 16
+    let block_count = crate::divide_up_by_multiple(width * height, 16);
+    block_count as usize * 8
 }
 
 pub fn compress_blocks(settings: &EncodeSettings, surface: &RgbaSurface) -> Vec<u8> {

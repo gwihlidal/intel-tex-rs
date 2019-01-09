@@ -5,7 +5,7 @@ extern crate intel_tex;
 use image::GenericImageView;
 use image::ImageBuffer;
 use image::Pixel;
-use intel_tex::bindings::kernel;
+use intel_tex::bc7;
 use std::fs::File;
 use std::path::Path;
 
@@ -30,7 +30,7 @@ fn main() {
         }
     }
 
-    let block_count = intel_tex::divide_up_by_multiple(width * height, 8);
+    let block_count = intel_tex::divide_up_by_multiple(width * height, 16);
     println!("Block count: {}", block_count);
 
     let mip_count = 1;
@@ -55,51 +55,22 @@ fn main() {
     )
     .unwrap();
 
-    let mut surface = kernel::rgba_surface {
-        width: width as i32,
-        height: height as i32,
-        stride: width as i32 * 4,
-        ptr: rgba_img.as_mut_ptr(),
+    let surface = intel_tex::RgbaSurface {
+        width,
+        height,
+        stride: width * 4,
+        data: &rgba_img,
     };
 
-    let more_refine: i32 = 2;
-    let mut bc7_settings_slow = kernel::bc7_enc_settings {
-        channels: 3,
-        mode_selection: [true, true, true, true], // mode02, mode13, mode45, mode6
-        refineIterations: [
-            more_refine + 2,
-            more_refine + 2,
-            more_refine + 2,
-            more_refine + 2,
-            more_refine + 2,
-            more_refine + 2,
-            more_refine + 2,
-            0,
-        ],
-        skip_mode2: false,
-        refineIterations_channel: more_refine + 2,
-        mode45_channel0: 0,
-        fastSkipTreshold_mode1: 64,
-        fastSkipTreshold_mode3: 64,
-        fastSkipTreshold_mode7: 0,
-    };
+    println!("Compressing to BC7...");
+    bc7::compress_blocks_into(
+        &bc7::opaque_ultra_fast_settings(),
+        &surface,
+        &mut dds.get_mut_data(0 /* layer */).unwrap(),
+    );
+    println!("  Done!");
 
-    let _bc6_settings = kernel::bc6h_enc_settings {
-        slow_mode: false,
-        fast_mode: false,
-        refineIterations_1p: 3,
-        refineIterations_2p: 3,
-        fastSkipTreshold: 4,
-    };
-
-    unsafe {
-        kernel::CompressBlocksBC7_ispc(
-            &mut surface,
-            dds.get_mut_data(0 /* layer */).unwrap().as_mut_ptr(),
-            &mut bc7_settings_slow,
-        );
-    }
-
+    println!("Saving lambertian.dds file");
     let mut dds_file = File::create("examples/lambertian.dds").unwrap();
     dds.write(&mut dds_file).expect("Failed to write dds file");
 }

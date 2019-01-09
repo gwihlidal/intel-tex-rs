@@ -4,8 +4,8 @@ use crate::RgbaSurface;
 #[inline(always)]
 pub fn calc_output_size(width: u32, height: u32) -> usize {
     // BC3 uses 16 bytes to store each 4×4 block, giving it an average data rate of 1 byte per pixel.
-    let block_count = crate::divide_up_by_multiple(width * height, 8);
-    block_count as usize * 16
+    let block_count = crate::divide_up_by_multiple(width * height, 16) as usize;
+    block_count * 16
 }
 
 pub fn compress_blocks(surface: &RgbaSurface) -> Vec<u8> {
