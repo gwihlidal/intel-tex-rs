@@ -1,21 +1,15 @@
-extern crate image;
 extern crate ddsfile;
+extern crate image;
 extern crate intel_tex;
 
+use image::GenericImageView;
+use image::ImageBuffer;
+use image::Pixel;
+use intel_tex::bindings::kernel;
 use std::fs::File;
 use std::path::Path;
-use image::Pixel;
-use image::ImageBuffer;
-use image::GenericImageView;
-use intel_tex::bindings::kernel;
 
-use ddsfile::{
-    Dds,
-    DxgiFormat,
-    D3D10ResourceDimension,
-    AlphaMode,
-    Caps2
-};
+use ddsfile::{AlphaMode, Caps2, D3D10ResourceDimension, Dds, DxgiFormat};
 
 fn main() {
     let rgb_img = image::open(&Path::new("examples/lambertian.jpg")).unwrap();
@@ -57,7 +51,9 @@ fn main() {
         Some(caps2),
         is_cubemap,
         resource_dimension,
-        alpha_mode).unwrap();
+        alpha_mode,
+    )
+    .unwrap();
 
     let mut surface = kernel::rgba_surface {
         width: width as i32,
@@ -70,7 +66,16 @@ fn main() {
     let mut bc7_settings_slow = kernel::bc7_enc_settings {
         channels: 3,
         mode_selection: [true, true, true, true], // mode02, mode13, mode45, mode6
-        refineIterations: [more_refine + 2, more_refine + 2, more_refine + 2, more_refine + 2, more_refine + 2, more_refine + 2, more_refine + 2, 0],
+        refineIterations: [
+            more_refine + 2,
+            more_refine + 2,
+            more_refine + 2,
+            more_refine + 2,
+            more_refine + 2,
+            more_refine + 2,
+            more_refine + 2,
+            0,
+        ],
         skip_mode2: false,
         refineIterations_channel: more_refine + 2,
         mode45_channel0: 0,
@@ -88,7 +93,11 @@ fn main() {
     };
 
     unsafe {
-        kernel::CompressBlocksBC7_ispc(&mut surface, dds.get_mut_data(0 /* layer */).unwrap().as_mut_ptr(), &mut bc7_settings_slow);
+        kernel::CompressBlocksBC7_ispc(
+            &mut surface,
+            dds.get_mut_data(0 /* layer */).unwrap().as_mut_ptr(),
+            &mut bc7_settings_slow,
+        );
     }
 
     let mut dds_file = File::create("examples/lambertian.dds").unwrap();

@@ -1,5 +1,5 @@
-use crate::RgbaSurface;
 use crate::bindings::kernel;
+use crate::RgbaSurface;
 
 #[derive(Debug, Copy, Clone)]
 pub struct EncodeSettings {
@@ -29,7 +29,10 @@ pub fn compress_blocks(settings: &EncodeSettings, surface: &RgbaSurface) -> Vec<
 }
 
 pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, blocks: &mut [u8]) {
-    assert_eq!(blocks.len(), calc_output_size(surface.width, surface.height));
+    assert_eq!(
+        blocks.len(),
+        calc_output_size(surface.width, surface.height)
+    );
     let mut surface = kernel::rgba_surface {
         width: surface.width as i32,
         height: surface.height as i32,

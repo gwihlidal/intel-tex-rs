@@ -1,5 +1,5 @@
-use crate::RgbaSurface;
 use crate::bindings::kernel;
+use crate::RgbaSurface;
 
 #[inline(always)]
 pub fn calc_output_size(width: u32, height: u32) -> usize {
@@ -16,7 +16,10 @@ pub fn compress_blocks(surface: &RgbaSurface) -> Vec<u8> {
 }
 
 pub fn compress_blocks_into(surface: &RgbaSurface, blocks: &mut [u8]) {
-    assert_eq!(blocks.len(), calc_output_size(surface.width, surface.height));
+    assert_eq!(
+        blocks.len(),
+        calc_output_size(surface.width, surface.height)
+    );
     let mut surface = kernel::rgba_surface {
         width: surface.width as i32,
         height: surface.height as i32,
