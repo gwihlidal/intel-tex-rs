@@ -6,24 +6,16 @@ use std::fs::File;
 use std::path::Path;
 use image::Pixel;
 use image::ImageBuffer;
-use image::GenericImage;
 use image::GenericImageView;
-use intel_tex::kernel;
+use intel_tex::bindings::kernel;
 
 use ddsfile::{
     Dds,
-    D3DFormat,
     DxgiFormat,
     D3D10ResourceDimension,
     AlphaMode,
     Caps2
 };
-
-#[inline(always)]
-fn divide_up_by_multiple(val: u32, align: u32) -> u32 {
-    let mask: u32 = align - 1;
-    (val + mask) / align
-}
 
 fn main() {
     let rgb_img = image::open(&Path::new("examples/lambertian.jpg")).unwrap();
