@@ -16,9 +16,13 @@ State of the art texture compression for BC6H, BC7, ETC1, ASTC and BC1/BC3.
 Requirements:
 
 * ISPC compiler to be installed: https://ispc.github.io/
-* Windows also needs libclang installed (for rust-bindgen): http://releases.llvm.org/download.html
+* Also need `libclang` installed (for rust-bindgen): https://rust-lang.github.io/rust-bindgen/requirements.html
 
 In the future, it may be possible to try and package ISPC with the crate (embedded, curl'd, etc..), but crates.io has a 10mb crate limit, so some thought is needed there. In addition to ISPC, the rust bindings to the generated code (provided by the ISPC crate) also needs rust bindgen, which requires libclang to be installed. This dependency is likely easier to break, if the ispc-rs crate is modified to support using a pre-generated FFI binding instead of always generating in build.rs.
+
+For convenience, ISPC binaries for macOS, Linux, and Windows are in the repository (but not the crate).
+Additionally, libclang exists in the LLVM installer for Windows, also included.
+https://github.com/gwihlidal/intel-tex-rs/tree/master/dependencies
 
 ## Supported compression formats:
 
