@@ -42,7 +42,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-intel-tex = "0.1.0"
+intel_tex = "0.1.1"
 ```
 
 and add this to your crate root:
