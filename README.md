@@ -1,4 +1,4 @@
-# intel-tex
+# intel_tex
 ========
 
 [![Latest version](https://img.shields.io/crates/v/intel-tex.svg)](https://crates.io/crates/intel-tex)
@@ -15,8 +15,10 @@ State of the art texture compression for BC6H, BC7, ETC1, ASTC and BC1/BC3.
 
 Requirements:
 
-* ISPC compiler to be installed: https://ispc.github.io/
-* Also need `libclang` installed (for rust-bindgen): https://rust-lang.github.io/rust-bindgen/requirements.html
+* ISPC compiler to be installed
+  * https://ispc.github.io/
+* Also need `libclang` installed (for rust-bindgen)
+  * https://rust-lang.github.io/rust-bindgen/requirements.html
 
 In the future, it may be possible to try and package ISPC with the crate (embedded, curl'd, etc..), but crates.io has a 10mb crate limit, so some thought is needed there. In addition to ISPC, the rust bindings to the generated code (provided by the ISPC crate) also needs rust bindgen, which requires libclang to be installed. This dependency is likely easier to break, if the ispc-rs crate is modified to support using a pre-generated FFI binding instead of always generating in build.rs.
 
@@ -42,7 +44,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-intel_tex = "0.1.1"
+intel_tex = "0.1.2"
 ```
 
 and add this to your crate root:
