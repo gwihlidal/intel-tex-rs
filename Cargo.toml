@@ -32,7 +32,7 @@ ispc = "0.3.8"
 
 [dev-dependencies]
 ddsfile = "0.2.3"
-image = "0.20.1"
+image = "0.21.0"
 
 [profile.release]
 lto = true

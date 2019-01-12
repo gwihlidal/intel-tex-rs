@@ -1,7 +1,6 @@
 # intel-tex
 ========
 
-[![intel-tex on travis-ci.com](https://travis-ci.com/gwihlidal/intel-tex-rs.svg?branch=master)](https://travis-ci.com/gwihlidal/intel-tex-rs)
 [![Latest version](https://img.shields.io/crates/v/intel-tex.svg)](https://crates.io/crates/intel-tex)
 [![Documentation](https://docs.rs/intel-tex/badge.svg)](https://docs.rs/intel-tex)
 [![](https://tokei.rs/b1/github/gwihlidal/intel-tex-rs)](https://github.com/gwihlidal/intel-tex-rs)
