@@ -1,5 +1,5 @@
 [package]
-name = "intel_tex"
+name = "intel-tex"
 version = "0.1.0"
 authors = ["Graham Wihlidal <graham@wihlidal.ca>"]
 description = "Rust bindings for Intel's ISPC texture compressor."
