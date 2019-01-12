@@ -21,7 +21,7 @@ fn main() {
 
     let mut rgba_img = ImageBuffer::new(width, height);
 
-    // Convert RGB -> RGBA
+    println!("Converting RGB -> RGBA"); // could be optimized
     for x in (0_u32..width).into_iter() {
         for y in (0_u32..height).into_iter() {
             let pixel = rgb_img.get_pixel(x, y);
