@@ -54,7 +54,16 @@ extern crate intel_tex;
 ## Example
 
 ```shell
-cargo run --release --example main
+$ cargo run --release --example main
+
+Width is 4096
+Height is 4096
+ColorType is RGB(8)
+Converting RGB -> RGBA
+Block count: 1048576
+Compressing to BC7...
+  Done!
+Saving lambertian.dds file
 ```
 
 ## License
