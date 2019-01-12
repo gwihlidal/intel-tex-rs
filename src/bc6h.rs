@@ -47,3 +47,58 @@ pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, bl
         kernel::CompressBlocksBC6H_ispc(&mut surface, blocks.as_mut_ptr(), &mut settings);
     }
 }
+
+#[inline(always)]
+pub fn very_fast_settings() -> EncodeSettings {
+    EncodeSettings {
+        slow_mode: false,
+        fast_mode: true,
+        fast_skip_threshold: 0,
+        refine_iterations_1p: 0,
+        refine_iterations_2p: 0,
+    }
+}
+
+#[inline(always)]
+pub fn very_settings() -> EncodeSettings {
+    EncodeSettings {
+        slow_mode: false,
+        fast_mode: true,
+        fast_skip_threshold: 2,
+        refine_iterations_1p: 0,
+        refine_iterations_2p: 1,
+    }
+}
+
+#[inline(always)]
+pub fn basic_settings() -> EncodeSettings {
+    EncodeSettings {
+        slow_mode: false,
+        fast_mode: false,
+        fast_skip_threshold: 4,
+        refine_iterations_1p: 2,
+        refine_iterations_2p: 2,
+    }
+}
+
+#[inline(always)]
+pub fn slow_settings() -> EncodeSettings {
+    EncodeSettings {
+        slow_mode: true,
+        fast_mode: false,
+        fast_skip_threshold: 10,
+        refine_iterations_1p: 2,
+        refine_iterations_2p: 2,
+    }
+}
+
+#[inline(always)]
+pub fn very_slow_settings() -> EncodeSettings {
+    EncodeSettings {
+        slow_mode: true,
+        fast_mode: false,
+        fast_skip_threshold: 32,
+        refine_iterations_1p: 2,
+        refine_iterations_2p: 2,
+    }
+}

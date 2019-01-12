@@ -8,21 +8,30 @@
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![APACHE2](https://img.shields.io/badge/license-APACHE2-blue.svg)
 
-Rust bindings for Intel's ISPC texture compression
+Rust bindings for Intel's ISPC texture compressor.
 
 * https://github.com/GameTechDev/ISPCTextureCompressor
 
 State of the art texture compression for BC6H, BC7, ETC1, ASTC and BC1/BC3.
 
-Requires the ISPC compiler to be installed: https://ispc.github.io/
+Requirements:
+
+* ISPC compiler to be installed: https://ispc.github.io/
+* Windows also needs libclang installed (for rust-bindgen): http://releases.llvm.org/download.html
+
+In the future, it may be possible to try and package ISPC with the crate (embedded, curl'd, etc..), but crates.io has a 10mb crate limit, so some thought is needed there. In addition to ISPC, the rust bindings to the generated code (provided by the ISPC crate) also needs rust bindgen, which requires libclang to be installed. This dependency is likely easier to break, if the ispc-rs crate is modified to support using a pre-generated FFI binding instead of always generating in build.rs.
 
 ## Supported compression formats:
 
+* BC1, BC3 (aka DXT1, DXT5)
 * BC6H (FP16 HDR input)
 * BC7
-* ASTC (LDR, block sizes up to 8x8)
 * ETC1
-* BC1, BC3 (aka DXT1, DXT5)
+
+## Pending compression formats:
+
+* ASTC (LDR, block sizes up to 8x8)
+    * Work in progress
 
 ## Usage
 

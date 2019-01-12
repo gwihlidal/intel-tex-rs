@@ -230,7 +230,6 @@ pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, bl
 }
 
 /*
-
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct astc_enc_context {
@@ -241,7 +240,6 @@ pub struct astc_enc_context {
     pub partitions: i32,
     pub color_endpoint_pairs: i32,
 }
-
 
 #[repr(C)]
 #[derive(Copy, Clone)]
@@ -282,6 +280,4 @@ extern "C" {
         settings: *mut astc_enc_settings,
     );
 }
-
-
 */

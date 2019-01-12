@@ -39,3 +39,10 @@ pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, bl
         kernel::CompressBlocksETC1_ispc(&mut surface, blocks.as_mut_ptr(), &mut settings);
     }
 }
+
+#[inline(always)]
+pub fn slow_settings() -> EncodeSettings {
+    EncodeSettings {
+        fast_skip_threshold: 6,
+    }
+}
