@@ -14,6 +14,12 @@ build = "build.rs"
 include = [
     "vendor/ISPC Texture Compressor/ispc_texcomp/kernel_astc.ispc",
     "vendor/ISPC Texture Compressor/ispc_texcomp/kernel.ispc",
+    "src/astc.rs",
+    "src/bc1.rs",
+    "src/bc3.rs",
+    "src/bc6h.rs",
+    "src/bc7.rs",
+    "src/etc1.rs",
     "src/lib.rs",
     "build.rs",
     "Cargo.toml",
