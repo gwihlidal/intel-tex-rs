@@ -1,5 +1,5 @@
 #[macro_use]
-extern crate ispc;
+extern crate ispc_rt;
 
 pub mod bindings {
     ispc_module!(kernel);
