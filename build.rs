@@ -18,7 +18,8 @@ fn compile_kernel() {
         .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
         .woff()
         .target_isas(vec![TargetISA::SSE2i32x4, TargetISA::SSE4i32x4,
-                     TargetISA::AVX1i32x8, TargetISA::AVX2i32x8])
+                     TargetISA::AVX1i32x8, TargetISA::AVX2i32x8,
+                     TargetISA::AVX512KNLi32x16, TargetISA::AVX512SKXi32x16])
         .out_dir("src/ispc/")
         .compile("kernel");
 
@@ -28,7 +29,8 @@ fn compile_kernel() {
         .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
         .woff()
         .target_isas(vec![TargetISA::SSE2i32x4, TargetISA::SSE4i32x4,
-                     TargetISA::AVX1i32x8, TargetISA::AVX2i32x8])
+                     TargetISA::AVX1i32x8, TargetISA::AVX2i32x8,
+                     TargetISA::AVX512KNLi32x16, TargetISA::AVX512SKXi32x16])
         .out_dir("src/ispc/")
         .compile("kernel_astc");
 }
