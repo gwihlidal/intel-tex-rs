@@ -36,7 +36,7 @@ https://github.com/gwihlidal/intel-tex-rs/tree/master/dependencies
 ## Pending compression formats:
 
 * ASTC (LDR, block sizes up to 8x8)
-    * Work in progress
+  * Work in progress
 
 ## Usage
 
@@ -44,7 +44,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-intel_tex = "0.1.2"
+intel_tex = "0.1.3"
 ```
 
 and add this to your crate root:
