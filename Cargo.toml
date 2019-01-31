@@ -31,10 +31,14 @@ edition = "2018"
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-ispc = "0.3.8"
+ispc_rt = "1.0.1"
 
 [build-dependencies]
-ispc = "0.3.8"
+ispc_compile = { version = "1.0.2", optional = true }
+ispc_rt = "1.0.1"
+
+[features]
+ispc = ["ispc_compile"]
 
 [dev-dependencies]
 ddsfile = "0.2.3"
