@@ -45,8 +45,8 @@ pub struct Block {
 #[inline(always)]
 pub fn opaque_fast_settings(block_width: u32, block_height: u32) -> EncodeSettings {
     EncodeSettings {
-        block_width: block_width,
-        block_height: block_height,
+        block_width,
+        block_height,
         channels: 3,
         fast_skip_threshold: 5,
         refine_iterations: 2,
@@ -56,8 +56,8 @@ pub fn opaque_fast_settings(block_width: u32, block_height: u32) -> EncodeSettin
 #[inline(always)]
 pub fn alpha_fast_settings(block_width: u32, block_height: u32) -> EncodeSettings {
     EncodeSettings {
-        block_width: block_width,
-        block_height: block_height,
+        block_width,
+        block_height,
         channels: 4,
         fast_skip_threshold: 5,
         refine_iterations: 2,
@@ -67,8 +67,8 @@ pub fn alpha_fast_settings(block_width: u32, block_height: u32) -> EncodeSetting
 #[inline(always)]
 pub fn alpha_slow_settings(block_width: u32, block_height: u32) -> EncodeSettings {
     EncodeSettings {
-        block_width: block_width,
-        block_height: block_height,
+        block_width,
+        block_height,
         channels: 4,
         fast_skip_threshold: 64,
         refine_iterations: 2,
@@ -185,15 +185,15 @@ pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, bl
                         continue;
                     }
                     let offset = (yy << 16) + (xx + k);
-                    let mode = mode_buffer[(program_count * i + k) as usize] as u64;
+                    let mode = u64::from(mode_buffer[(program_count * i + k) as usize]);
                     let mode_bin = mode >> 20;
                     let list_start = list_size * mode_bin as usize;
-                    if mode_lists[list_start] < (program_count - 1) as u64 {
+                    if mode_lists[list_start] < u64::from(program_count - 1) {
                         let index = (mode_lists[list_start] + 1) as usize;
                         mode_lists[list_start] = index as u64;
-                        mode_lists[list_start + index] = ((offset as u64) << 32) + mode;
+                        mode_lists[list_start + index] = (u64::from(offset) << 32) + mode;
                     } else {
-                        mode_lists[list_start] = ((offset as u64) << 32) + mode;
+                        mode_lists[list_start] = (u64::from(offset) << 32) + mode;
                         astc_encode(
                             &mut settings,
                             &mut surface,
@@ -201,8 +201,8 @@ pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, bl
                             blocks,
                             &mut mode_lists[list_start..(list_start + list_size)],
                         );
-                        for clear_index in list_start..(list_start + list_size) {
-                            mode_lists[clear_index] = 0;
+                        for mode_list in mode_lists.iter_mut().skip(list_start).take(list_size) {
+                            *mode_list = 0;
                         }
                     }
                 }
@@ -223,8 +223,8 @@ pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, bl
             blocks,
             &mut mode_lists[list_start..(list_start + list_size)],
         );
-        for clear_index in list_start..(list_start + list_size) {
-            mode_lists[clear_index] = 0;
+        for mode_list in mode_lists.iter_mut().skip(list_start).take(list_size) {
+            *mode_list = 0;
         }
     }
 }

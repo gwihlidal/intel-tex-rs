@@ -13,14 +13,14 @@ pub fn calc_output_size(width: u32, height: u32) -> usize {
     block_count as usize * 8
 }
 
-pub fn compress_blocks(settings: &EncodeSettings, surface: &RgbaSurface) -> Vec<u8> {
+pub fn compress_blocks(settings: EncodeSettings, surface: &RgbaSurface) -> Vec<u8> {
     let output_size = calc_output_size(surface.width, surface.height);
     let mut output = vec![0u8; output_size];
     compress_blocks_into(settings, surface, &mut output);
     output
 }
 
-pub fn compress_blocks_into(settings: &EncodeSettings, surface: &RgbaSurface, blocks: &mut [u8]) {
+pub fn compress_blocks_into(settings: EncodeSettings, surface: &RgbaSurface, blocks: &mut [u8]) {
     assert_eq!(
         blocks.len(),
         calc_output_size(surface.width, surface.height)
