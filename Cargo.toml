@@ -33,7 +33,7 @@ include = [
 edition = "2018"
 
 [badges]
-#travis-ci = { repository = "gwihlidal/intel-tex-rs" }
+travis-ci = { repository = "gwihlidal/intel-tex-rs" }
 maintenance = { status = "actively-developed" }
 
 [dependencies]
