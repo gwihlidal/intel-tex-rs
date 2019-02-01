@@ -1,8 +1,15 @@
 # Changes
 
+## 0.1.4 (2019-02-01)
+
+* Added travis build script.
+* Fixed up some repository links.
+* Updated documentation.
+* Minor code and API cleanup.
+
 ## 0.1.3 (2019-01-31)
 
-* Remove dependency on ISPC and libclang (bindgen) by using pre-generated kernel binaries (can build these with --features=ispc)
+* Remove dependency on ISPC and libclang (bindgen) by using pre-generated kernel binaries (can build these with --features=ispc).
 
 ## 0.1.2 (2019-01-12)
 
