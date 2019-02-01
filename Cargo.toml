@@ -12,8 +12,6 @@ categories = ["rendering", "rendering::engine", ]
 license = "MIT/Apache-2.0"
 build = "build.rs"
 include = [
-    "vendor/ISPC Texture Compressor/ispc_texcomp/kernel_astc.ispc",
-    "vendor/ISPC Texture Compressor/ispc_texcomp/kernel.ispc",
     "src/astc.rs",
     "src/bc1.rs",
     "src/bc3.rs",
@@ -21,6 +19,14 @@ include = [
     "src/bc7.rs",
     "src/etc1.rs",
     "src/lib.rs",
+    "src/ispc/kernel_astc.rs",
+    "src/ispc/kernel.rs",
+    "src/ispc/kernel_astcx86_64-pc-windows-msvc.lib",
+    "src/ispc/kernelx86_64-pc-windows-msvc.lib",
+    "src/ispc/libkernel_astcx86_64-apple-darwin.a",
+    "src/ispc/libkernelx86_64-apple-darwin.a",
+    "src/ispc/libkernel_astcx86_64-unknown-linux-gnu.a",
+    "src/ispc/libkernelx86_64-unknown-linux-gnu.a",
     "build.rs",
     "Cargo.toml",
 ]
