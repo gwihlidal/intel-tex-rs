@@ -1,8 +1,8 @@
 # intel_tex
 ========
 
-[![Latest version](https://img.shields.io/crates/v/intel-tex.svg)](https://crates.io/crates/intel-tex)
-[![Documentation](https://docs.rs/intel-tex/badge.svg)](https://docs.rs/intel-tex)
+[![Latest version](https://img.shields.io/crates/v/intel_tex.svg)](https://crates.io/crates/intel_tex)
+[![Documentation](https://docs.rs/intel_tex/badge.svg)](https://docs.rs/intel_tex)
 [![](https://tokei.rs/b1/github/gwihlidal/intel-tex-rs)](https://github.com/gwihlidal/intel-tex-rs)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![APACHE2](https://img.shields.io/badge/license-APACHE2-blue.svg)
@@ -88,6 +88,6 @@ known improvements are documented.
 
 ## Code of Conduct
 
-Contribution to the intel-tex crate is organized under the terms of the
-Contributor Covenant, the maintainer of intel-tex, @gwihlidal, promises to
+Contribution to the intel_tex crate is organized under the terms of the
+Contributor Covenant, the maintainer of intel_tex, @gwihlidal, promises to
 intervene to uphold that code of conduct.
