@@ -13,7 +13,8 @@ Rust bindings for Intel's ISPC texture compressor.
 
 State of the art texture compression for BC6H, BC7, ETC1, ASTC and BC1/BC3.
 
-ISPC and `libclang` are not required, unless regenering the ISPC kernels:
+ISPC and `libclang` are not required, unless regenerating the ISPC kernels:
+
 ```cargo build --features=ispc```
 
 * ISPC compiler:
