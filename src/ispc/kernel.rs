@@ -148,6 +148,14 @@ pub mod kernel {
     }
 
     extern "C" {
+        pub fn CompressBlocksBC4_ispc(src: *mut rgba_surface, dst: *mut u8);
+    }
+
+    extern "C" {
+        pub fn CompressBlocksBC5_ispc(src: *mut rgba_surface, dst: *mut u8);
+    }
+
+    extern "C" {
         pub fn CompressBlocksBC6H_ispc(
             src: *mut rgba_surface,
             dst: *mut u8,
