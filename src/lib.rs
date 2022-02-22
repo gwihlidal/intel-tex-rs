@@ -9,6 +9,8 @@ pub mod bindings {
 pub mod astc;
 pub mod bc1;
 pub mod bc3;
+pub mod bc4;
+pub mod bc5;
 pub mod bc6h;
 pub mod bc7;
 pub mod etc1;
