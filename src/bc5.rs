@@ -37,7 +37,7 @@ pub fn compress_blocks_into(surface: &RgbaSurface, blocks: &mut [u8]) {
     let mut surface = kernel::rgba_surface {
         width: surface.width as i32,
         height: surface.height as i32,
-        stride: (surface.width * 2) as i32,
+        stride: (surface.stride / 2) as i32,
         ptr: (&rg_data).as_ptr() as *mut u8,
     };
 
