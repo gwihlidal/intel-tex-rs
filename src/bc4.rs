@@ -20,11 +20,24 @@ pub fn compress_blocks_into(surface: &RgbaSurface, blocks: &mut [u8]) {
         blocks.len(),
         calc_output_size(surface.width, surface.height)
     );
+
+    let mut r_data = vec![0_u8; (surface.width * surface.height) as usize];
+    let pitch = (surface.width * 32 + 7) / 8;
+    let mut offset = 0_u32;
+
+    for y in 0..surface.height {
+        for x in 0..surface.width {
+            // Copy R byte over
+            r_data[offset as usize] = surface.data[(x * 4 + y * pitch) as usize];
+            offset += 1;
+        }
+    }
+
     let mut surface = kernel::rgba_surface {
         width: surface.width as i32,
         height: surface.height as i32,
-        stride: surface.stride as i32,
-        ptr: surface.data.as_ptr() as *mut u8,
+        stride: surface.width as i32,
+        ptr: (&r_data).as_ptr() as *mut u8,
     };
 
     unsafe {
