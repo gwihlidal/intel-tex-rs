@@ -29,7 +29,7 @@ https://github.com/gwihlidal/intel-tex-rs/tree/master/dependencies
 
 ## Supported compression formats:
 
-* BC1, BC3 (aka DXT1, DXT5)
+* BC1, BC3 (aka DXT1, DXT5) and BC4, BC5 (aka ATI1N, ATI2N)
 * BC6H (FP16 HDR input)
 * BC7
 * ETC1
