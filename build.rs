@@ -13,35 +13,33 @@ extern crate ispc_compile;
 fn compile_kernel() {
     use ispc_compile::TargetISA;
 
+    #[cfg(target_arch = "x86_64")]
+    let target_isas = vec![
+        TargetISA::SSE2i32x4,
+        TargetISA::SSE4i32x4,
+        TargetISA::AVX1i32x8,
+        TargetISA::AVX2i32x8,
+        TargetISA::AVX512KNLi32x16,
+        TargetISA::AVX512SKXi32x16,
+    ];
+
+    #[cfg(target_arch = "aarch64")]
+    let target_isas = vec![TargetISA::Neoni32x4];
+
+    #[cfg(target_arch = "x86_64")]
     ispc_compile::Config::new()
-        .file("vendor/ISPC Texture Compressor/ispc_texcomp/kernel.ispc")
+        .file("vendor/ispc_texcomp/kernel.ispc")
         .opt_level(2)
         .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
-        .woff()
-        .target_isas(vec![
-            TargetISA::SSE2i32x4,
-            TargetISA::SSE4i32x4,
-            TargetISA::AVX1i32x8,
-            TargetISA::AVX2i32x8,
-            TargetISA::AVX512KNLi32x16,
-            TargetISA::AVX512SKXi32x16,
-        ])
+        .target_isas(target_isas)
         .out_dir("src/ispc")
         .compile("kernel");
 
     ispc_compile::Config::new()
-        .file("vendor/ISPC Texture Compressor/ispc_texcomp/kernel_astc.ispc")
+        .file("vendor/ispc_texcomp/kernel_astc.ispc")
         .opt_level(2)
         .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
-        .woff()
-        .target_isas(vec![
-            TargetISA::SSE2i32x4,
-            TargetISA::SSE4i32x4,
-            TargetISA::AVX1i32x8,
-            TargetISA::AVX2i32x8,
-            TargetISA::AVX512KNLi32x16,
-            TargetISA::AVX512SKXi32x16,
-        ])
+        .target_isas(target_isas)
         .out_dir("src/ispc")
         .compile("kernel_astc");
 }

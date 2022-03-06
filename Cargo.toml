@@ -1,7 +1,7 @@
 [package]
 name = "intel_tex"
-version = "0.1.4"
-authors = ["Graham Wihlidal <graham@wihlidal.ca>"]
+version = "0.1.5"
+authors = ["Graham Wihlidal <graham@wihlidal.ca> Daniel Hu <yimingdz@gmail.com>"]
 description = "Rust bindings for Intel's ISPC texture compressor."
 homepage = "https://github.com/gwihlidal/intel-tex-rs"
 repository = "https://github.com/gwihlidal/intel-tex-rs"
@@ -37,11 +37,11 @@ travis-ci = { repository = "gwihlidal/intel-tex-rs" }
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-ispc_rt = "1.0.2"
+ispc_rt = "1.0.4"
 
 [build-dependencies]
 ispc_compile = { version = "1.0.4", optional = true }
-ispc_rt = "1.0.2"
+ispc_rt = "1.0.4"
 
 [features]
 ispc = ["ispc_compile"]
