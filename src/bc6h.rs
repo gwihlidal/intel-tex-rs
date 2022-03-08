@@ -60,7 +60,7 @@ pub fn very_fast_settings() -> EncodeSettings {
 }
 
 #[inline(always)]
-pub fn very_settings() -> EncodeSettings {
+pub fn fast_settings() -> EncodeSettings {
     EncodeSettings {
         slow_mode: false,
         fast_mode: true,

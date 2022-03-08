@@ -1,15 +1,15 @@
 [package]
-name = "intel_tex"
+name = "ispc-texcomp"
 version = "0.1.5"
-authors = ["Graham Wihlidal <graham@wihlidal.ca> Daniel Hu <yimingdz@gmail.com>"]
+authors = ["Daniel Hu <yimingdz@gmail.com>", "Graham Wihlidal <graham@wihlidal.ca>"]
 description = "Rust bindings for Intel's ISPC texture compressor."
-homepage = "https://github.com/gwihlidal/intel-tex-rs"
-repository = "https://github.com/gwihlidal/intel-tex-rs"
-documentation = "https://docs.rs/intel_tex"
+homepage = "https://github.com/Danielmelody/ispc-texcomp-rs"
+repository = "https://github.com/Danielmelody/ispc-texcomp-rs"
+documentation = "https://docs.rs/ispc-texcomp"
 readme = "README.md"
 keywords = ["texture", "image", "compress", "intel", "ispc"]
 categories = ["rendering", "rendering::engine", ]
-license = "MIT/Apache-2.0"
+license = "MIT"
 build = "build.rs"
 include = [
     "src/astc.rs",
@@ -21,20 +21,13 @@ include = [
     "src/lib.rs",
     "src/ispc/kernel_astc.rs",
     "src/ispc/kernel.rs",
-    "src/ispc/kernel_astcx86_64-pc-windows-msvc.lib",
-    "src/ispc/kernelx86_64-pc-windows-msvc.lib",
-    "src/ispc/libkernel_astcx86_64-apple-darwin.a",
-    "src/ispc/libkernelx86_64-apple-darwin.a",
-    "src/ispc/libkernel_astcx86_64-unknown-linux-gnu.a",
-    "src/ispc/libkernelx86_64-unknown-linux-gnu.a",
+    "src/ispc/*.lib",
+    "src/ispc/*.a",
     "build.rs",
     "Cargo.toml",
 ]
-edition = "2018"
+edition = "2021"
 
-[badges]
-travis-ci = { repository = "gwihlidal/intel-tex-rs" }
-maintenance = { status = "actively-developed" }
 
 [dependencies]
 ispc_rt = "1.0.4"
@@ -47,8 +40,8 @@ ispc_rt = "1.0.4"
 ispc = ["ispc_compile"]
 
 [dev-dependencies]
-ddsfile = "0.2.3"
-image = "0.21.0"
+ddsfile = "0.5.0"
+image = "0.24.1"
 
 [profile.release]
 lto = true
