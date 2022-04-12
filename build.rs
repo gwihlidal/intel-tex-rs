@@ -14,7 +14,7 @@ fn compile_kernel() {
     use ispc_compile::TargetISA;
 
     ispc_compile::Config::new()
-        .file("vendor/ISPC Texture Compressor/ispc_texcomp/kernel.ispc")
+        .file("vendor/ispc_texcomp/kernel.ispc")
         .opt_level(2)
         .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
         .woff()
@@ -30,7 +30,7 @@ fn compile_kernel() {
         .compile("kernel");
 
     ispc_compile::Config::new()
-        .file("vendor/ISPC Texture Compressor/ispc_texcomp/kernel_astc.ispc")
+        .file("vendor/ispc_texcomp/kernel_astc.ispc")
         .opt_level(2)
         .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
         .woff()
